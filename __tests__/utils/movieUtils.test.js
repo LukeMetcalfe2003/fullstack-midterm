@@ -1,4 +1,3 @@
-// __tests__/utils/movieUtils.test.js
 
 const { getTopRatedMovies, getMoviesByGenre, getMovieDetailsById, selectRandomMovieId } = require('../../utils/movieUtils');
 const { Movies } = require('../../utils/data');
