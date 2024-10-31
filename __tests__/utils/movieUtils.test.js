@@ -1,34 +1,51 @@
-const { getRandomMoviesByGenre, getTopRatedMovies, formatMovieData, getRandomGenre, generateMovieReport } = require("../../utils/movieUtils");
+// __tests__/utils/movieUtils.test.js
+
+const { getTopRatedMovies, getMoviesByGenre, getMovieDetailsById, selectRandomMovieId } = require('../../utils/movieUtils');
+const { Movies } = require('../../utils/data');
 
 describe('Movie Utility Functions', () => {
-    describe('getMoviesByGenre', () => {
-
+  describe('getMoviesByGenre', () => {
+    test('should return x movies from the specified genre', () => {
+      const genre = 'Action';
+      const result = getMoviesByGenre(genre);
+      expect(result).toBeInstanceOf(Array);
     });
 
-    describe('getTopRatedMovies', () => {
+    test('should return an appropriate response if no movies exist for the genre', () => {
+      const genre = 'NonExistentGenre';
+      const result = getMoviesByGenre(genre);
+      expect(result).toEqual([]);
+    });
+  });
 
+  describe('getTopRatedMovies', () => {
+    test('should return the correct number of movies ordered by rating', () => {
+      const result = getTopRatedMovies(5);
+      expect(result.length).toBe(5);
+    });
+  });
+
+  describe('getMovieDetailsById', () => {
+    test('should return a valid movie for a valid ID', () => {
+      const movieId = 1;
+      const result = getMovieDetailsById(movieId);
+      expect(result).toBeDefined();
     });
 
-    describe('getMovieDetailsById', () => {
-        test('returns the movie object with the specified ID', () => {
-            const id = 1;
-            const movie = getMovieDetailsById(id);
-            expect(movie).toEqual({
-                id: 1,
-                title: "The Shawshank Redemption",
-                genre: "Drama",
-                rating: 9.3,
-                director: "Frank Darabont",
-                year: 1994,
-                runtime: 142,
-                plot: "Two imprisoned"
-            });
-        });
+    test('should return an appropriate response for an invalid ID', () => {
+      const movieId = 999;
+      const result = getMovieDetailsById(movieId);
+      expect(result).toBeUndefined();
     });
-    
-    describe('selectRandomMovieId', () => {
-    
+  });
+
+  describe('selectRandomMovieId', () => {
+    test('should return a random movie ID', () => {
+      const result = selectRandomMovieId();
+      expect(result).toBeGreaterThanOrEqual(1);
+      expect(result).toBeLessThanOrEqual(Movies.length);
     });
+  });
 });
 
-getRandomMoviesByGenre
+

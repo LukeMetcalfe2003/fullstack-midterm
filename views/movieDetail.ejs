@@ -1,37 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= movie.title %></title>
-    <link rel="stylesheet" href="/styles.css" />
-    <!-- Add your CSS here -->
-  </head>
-  <body>
-    <%- include('header') %>
-  
-    <div class="movie-details">
-      <h1><%= movie.title %></h1>
-      <p><strong>Release Year:</strong> <%= movie.releaseYear %></p>
-      <p><strong>Rating:</strong> <%= movie.rating %> / 10</p>
-      <p><strong>Director:</strong><%= movie.director%></p>
-      <p><%= movie.description %></p>
-    </div>
-  
-    <!-- Recommendations Section -->
-    <section class="recommendations">
-      <h2>Recommended Movies</h2> 
-      <ul>
-        <% recommendations.forEach(recMovie => { %>
-        <li>
-          <a href="/movie/<%= recMovie.id %>"><%= recMovie.title %></a> - <%=
-          recMovie.genre %>
-        </li>
-        <% }) %>
-      </ul>
-    </section>
-  
-  
-  </body>
-  
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= movie.title %></title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <%- include('header') %>
+  <div class="movie-detail">
+    <h1><%= movie.title %></h1>
+    <p><strong>Release Year:</strong> <%= movie.releaseYear %></p>
+    <p><strong>Rating:</strong> <%= movie.rating %></p>
+    <p><strong>Description:</strong> <%= movie.description %></p>
+  </div>
+
+  <!-- Recommendations Section -->
+  <section class="recommendations">
+    <h2>Recommended Movies</h2>
+    <ul>
+      <% recommendations.forEach(recMovie => { %>
+      <li>
+        <a href="/movie/<%= recMovie.id %>"><%= recMovie.title %></a> - <%= recMovie.genre %>
+      </li>
+      <% }) %>
+    </ul>
+  </section>
+</body>
 </html>

@@ -55,8 +55,18 @@ header nav ul li a:hover {
     text-decoration: underline;
 }
 
-header nav ul li a:visited {
+h1 {
+    text-align: center;
+    margin: 20px 0;
+}
+
+a {
     color: #F6F6F6;
     text-decoration: none;
-    font-size: 18px;
+}
+
+a:hover {
+    color: rgb(76, 0, 255);
+    background-color: #F6F6F6;
+    text-decoration: underline;
 }

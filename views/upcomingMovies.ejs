@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upcoming Movies</title>
+    <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+    <%- include('header') %>
+    <h1>Upcoming Movies</h1>
+
+    <div class="movies-container">
+        <% if (movies.length > 0) { %>
+            <ul class="movie-list">
+                <% movies.forEach(movie => { %>
+                    <li class="movie-item">
+                        <h2><a href="/movie/<%= movie.id %>"><%= movie.title %></a></h2>
+                        <p><strong>Release Year:</strong> <%= movie.releaseYear %></p>
+                        <p><strong>Discription:</strong> <%= movie.description %></p>
+
+                    </li>
+                <% }) %>
+            </ul>
+        <% } else { %>
+            <p>No upcoming movies found.</p>
+        <% } %>
+    </div>
+</body>
+</html>

@@ -1,12 +1,26 @@
 <html lang="en">
-    <head>
-        <title>Movie Gallery</title>
-        <link rel="stylesheet" type="text/css" href="./styles.css">
-    </head>
-    <body>
-        <%- include('header') %>
-        <main class="main-content">
-            <h1>Movie Gallery</h1>
-        </main>
-    </body>
+  <head>
+    <title>Movie Gallery</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css" />
+  </head>
+  <body>
+    <%- include('header') %> 
+  
+    <main class="main-content">
+      <h1>Movie Gallery</h1>
+      <div class="movie-container">
+        <div class="movie-grid">
+          <% random9Movies.forEach(movie => { %>
+            <div class="movie-card">
+              <h2><%= movie.title %></h2>
+              <p><strong>Release Year:</strong> <%= movie.releaseYear %></p>
+              <p><strong>Rating:</strong> <%= movie.rating || 'N/A' %></p>
+              <p><strong>Description:</strong><%= movie.description %></p>
+              <a href="/movie/<%= movie.id %>">More About This Movie</a>
+            </div>
+          <% }) %>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>

@@ -32,6 +32,7 @@ function getTopRatedMovies(x) {
  */
 function getMovieDetailsById(id) {
     // Implementation here
+    return Movies.find((movie) => movie.id === id);
 }
 
 /**
@@ -40,6 +41,8 @@ function getMovieDetailsById(id) {
  */
 function selectRandomMovieId() {
     // Implementation here
+    const randomIndex = Math.floor(Math.random() * Movies.length);
+  return Movies[randomIndex].id;
 }
 
 // Random number of movies
